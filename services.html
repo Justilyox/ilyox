@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorateur de fichiers - Services</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .explorer-container {
+      width: 80%;
+      max-width: 800px;
+      background-color: #2d2d2d;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .folder, .file {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .folder:hover, .file:hover {
+      background-color: #3a3a3a;
+    }
+
+    .folder-icon, .file-icon {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    .folder-name, .file-name {
+      font-size: 18px;
+    }
+
+    .file-container {
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .service-details {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 10px;
+    }
+
+    .service-details h2 {
+      margin-top: 0;
+      color: #66ff66;
+    }
+
+    .service-details p {
+      font-size: 16px;
+    }
+
+    #service-title {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="explorer-container">
+  <div class="folder" onclick="toggleFolder('services')">
+    <div class="folder-icon">📁</div>
+    <div class="folder-name">Services</div>
+  </div>
+  
+  <div id="services" class="file-container hidden">
+    <div class="file" onclick="showDetails('Développement')">
+      <div class="file-icon">📄</div>
+      <div class="file-name">Développement.txt</div>
+    </div>
+    <div class="file" onclick="showDetails('Création de serveur Discord')">
+      <div class="file-icon">📄</div>
+      <div class="file-name">Création de serveur Discord.txt</div>
+    </div>
+    <div class="file" onclick="showDetails('Cybersécurité')">
+      <div class="file-icon">📄</div>
+      <div class="file-name">Cybersécurité.txt</div>
+    </div>
+    <div class="file" onclick="showDetails('Gestion d\'infrastructure')">
+      <div class="file-icon">📄</div>
+      <div class="file-name">Gestion d'infrastructure.txt</div>
+    </div>
+  </div>
+
+  <div id="service-details" class="service-details hidden">
+    <h2 id="service-title">Détails du service</h2>
+    <p id="service-description">Sélectionnez un service pour en savoir plus.</p>
+  </div>
+</div>
+
+<script>
+  function toggleFolder(folderId) {
+    const folder = document.getElementById(folderId);
+    folder.classList.toggle('hidden');
+  }
+
+  function showDetails(serviceName) {
+    const details = document.getElementById('service-details');
+    const title = document.getElementById('service-title');
+    const description = document.getElementById('service-description');
+    
+    title.textContent = `Détails de: ${serviceName}`;
+    
+    // Définir une description dynamique pour chaque service
+    switch(serviceName) {
+      case 'Développement':
+        description.textContent = 'Service de développement web, applications, bots, etc.';
+        break;
+      case 'Création de serveur Discord':
+        description.textContent = 'Service de création et gestion de serveurs Discord sur mesure.';
+        break;
+      case 'Cybersécurité':
+        description.textContent = 'Analyse de sécurité, audits, et conseils pour la cybersécurité.';
+        break;
+      case 'Gestion d\'infrastructure':
+        description.textContent = 'Gestion et optimisation de l\'infrastructure serveur et réseau.';
+        break;
+      default:
+        description.textContent = 'Sélectionnez un service pour en savoir plus.';
+    }
+
+    details.classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>

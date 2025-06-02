@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorateur de Fichiers</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;500&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            color: #fff;
+            font-family: 'Source Code Pro', monospace;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .explorer {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: auto;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+        }
+        .title-bar {
+            background: #2b2b2b;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #00ff00;
+            border-radius: 5px 5px 0 0;
+        }
+        .file-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px;
+        }
+        .file {
+            background: #333;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            width: 120px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .file:hover {
+            background: #00ff00;
+            color: #000;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="explorer">
+        <div class="title-bar">Explorateur de Fichiers</div>
+        <div class="file-container">
+            <a href="https://ilyes-kak6.onrender.com" class="file">📂 Portfolio</a>
+            <a href="./services.html" class="file">📂 Services</a>
+            <a href="./servicepay.html" class="file">📂Servicepay</a>
+            <a href="https://donate.stripe.com/00gbKq7bqdQX2ys7su" class="file">💰 JMX'GROUP</a>
+            <a href="contact.html" class="file">📲 Contact</a>
+            <a href="./CV.html" class="file">📄 CV.pdf</a>
+            <a href="https://discord.gg/sQEBpZ7NQD" class="file">🔒discord</a>
+        </div>
+    </div>
+</body>
+</html>

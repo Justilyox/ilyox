@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Ilyox</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .cv-container {
+      display: flex;
+      max-width: 1100px;
+      margin: 40px auto;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+      animation: fadeIn 1.5s ease;
+    }
+    .sidebar {
+      background: #1e1e1e;
+      width: 35%;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      animation: slideInLeft 1s ease forwards;
+    }
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #00fff7;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .sidebar img:hover {
+      transform: scale(1.05);
+    }
+    .sidebar h1 {
+      font-size: 1.8em;
+      color: #00fff7;
+      text-shadow: 0 0 8px #00fff7;
+    }
+    .sidebar h2 {
+      font-size: 1em;
+      color: #aaa;
+      margin-bottom: 20px;
+    }
+    .sidebar .section {
+      width: 100%;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease forwards;
+    }
+    .sidebar .section h3 {
+      color: #00fff7;
+      font-size: 1em;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 5px;
+    }
+    .sidebar .section p {
+      font-size: 0.9em;
+      margin: 5px 0;
+    }
+    .main {
+      width: 65%;
+      background: #181818;
+      padding: 40px 30px;
+      animation: slideInRight 1s ease forwards;
+    }
+    .main h2 {
+      color: #00fff7;
+      font-size: 1.4em;
+      border-bottom: 2px solid #00fff7;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+    }
+    .main .item {
+      margin-bottom: 25px;
+      transition: transform 0.3s;
+    }
+    .main .item:hover {
+      transform: scale(1.02);
+    }
+    .main .item h3 {
+      color: #fff;
+      font-size: 1.1em;
+    }
+    .main .item span {
+      color: #aaa;
+      font-size: 0.9em;
+    }
+    .main .item ul {
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+    .main .item ul li {
+      font-size: 0.95em;
+      margin-bottom: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.8em;
+      color: #666;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cv-container">
+    <div class="sidebar">
+      <img src="https://pbs.twimg.com/profile_images/1915696079187640320/l-cqoDyR_400x400.jpg" alt="Ilyox">
+      <h1>Ilyox</h1>
+      <h2>Développeur & Spécialiste Réseaux</h2>
+
+      <div class="section">
+        <h3>CONTACT</h3>
+        <p>📧 ilyox@jmx94.fr</p>
+        <p>💻 Developpeur & others</p>
+        <p>🌍 France</p>
+      </div>
+
+      <div class="section">
+        <h3>LANGUES</h3>
+        <p>🇫🇷 Français (Natif)</p>
+        <p>🇬🇧 Anglais (Technique)</p>
+      </div>
+
+      <div class="section">
+        <h3>PROFIL</h3>
+        <p>Passionné par la tech, je conçois des systèmes performants en développement, électronique, réseaux et cybersécurité. Je crée et gère des serveurs Discord, infrastructures réseau et bots avancés pour divers projets et entreprises.</p>
+      </div>
+    </div>
+
+    <div class="main">
+      <h2>EXPÉRIENCES PROFESSIONNELLES</h2>
+
+      <div class="item">
+        <h3>Spécialiste en éléectronique</h3>
+        <span>2022 - Aujourd’hui</span>
+        <ul>
+          <li>Création de sites dynamiques, dashboards, interfaces animées</li>
+          <li>Intégration API, bases de données, paiement en ligne (Stripe)</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <h3>Technicien Réseaux & Informatique & developpeur</h3>
+        <span>2020 - 2022</span>
+        <ul>
+          <li>Dépannage réseau, sécurité, déploiement de solutions</li>
+          <li>Maintenance infrastructure, Raspberry Pi, serveurs Linux</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <h3>Créateur et gestionnaire de serveurs Discord</h3>
+        <span>Depuis 2019</span>
+        <ul>
+          <li>Développement de bots personnalisés (modération, tickets, jeux)</li>
+          <li>Gestion avancée de communautés et projets Discord professionnels</li>
+        </ul>
+      </div>
+
+      <h2>FORMATION</h2>
+
+      <div class="item">
+        <h3>Apprentissage seul à la cybersecurité !</h3>
+        <span>2021 - 2023</span>
+      </div>
+
+      <h2>COMPÉTENCES</h2>
+
+      <div class="item">
+        <ul>
+          <li>💻 HTML, CSS, JS, Node.js, Python, Bash</li>
+          <li>🛠️ Raspberry Pi, Arduino, systèmes embarqués</li>
+          <li>🌐 Réseaux, VLAN, firewall, filtrage MAC, proxys</li>
+          <li>🧐 Cybersécurité, surveillance réseau, audit</li>
+          <li>🤖 Bots Discord (modération, interactions, API)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    ✨ Fait par Ilyox - Tous droits réservés 2025 ✨
+    Attention ! Depuis 2025 , j'appartient à l'association JMX'GROUP , et que l'argent recolté permettra de financer des projets  , et seulement pour celle-ci !
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+    </head>
+    <body>
+      
+    </body>
+    </html>
+  </footer>
+
+</body>
+</html>

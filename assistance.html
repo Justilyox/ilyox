@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assistance & Factures - ILYOX</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      background: #161b22;
+      box-shadow: 0 0 10px #58a6ff;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #58a6ff;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    nav a {
+      color: #58a6ff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .form-section {
+      background: #0d1117;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea, select {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      border: 1px solid #30363d;
+      background: #161b22;
+      color: #c9d1d9;
+    }
+    button {
+      background: #238636;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2ea043;
+    }
+    .response-message {
+      background-color: #21262d;
+      border-left: 4px solid #58a6ff;
+      padding: 1rem;
+      margin-top: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Assistance & Demandes de Facture</h1>
+    <nav>
+        <a href="./index.html">Retour</a>
+      <a href="./servicepay.html">Services</a>
+      <a href="assistance.html">Assistance & Factures</a>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <h2>Formulaire de demande</h2>
+    <form id="supportForm">
+      <input type="email" name="email" placeholder="Adresse e-mail" required>
+      <input type="text" name="discord" placeholder="Pseudo Discord" required>
+      <textarea name="details" placeholder="Détails du problème ou de la demande" rows="4" required></textarea>
+      <select name="contact" id="contactChoice" required>
+        <option value="">Comment voulez-vous être contacté ?</option>
+        <option value="discord">Via Discord</option>
+        <option value="email">Par Email</option>
+      </select>
+      <select name="facture" id="factureChoice" required>
+        <option value="">Souhaitez-vous une facture ?</option>
+        <option value="oui">Oui</option>
+        <option value="non">Non</option>
+      </select>
+      <button type="submit">Envoyer</button>
+    </form>
+    <div class="response-message" id="responseBox"></div>
+  </section>
+
+  <footer>
+    <p style="text-align:center; padding:2rem; font-size: 0.9rem; color:#8b949e">© 2025 ILYOX — Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    const webhookURL = 'https://discord.com/api/webhooks/1360333005821837362/2O8MbB6CH19Z9lxvEOYkFYwAN_baPofQc_TYJMvXoGDcxGkU6zOk3STa1BoSvnO4jz7g';
+
+    document.getElementById('supportForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const contactMethod = form.get('contact');
+      const wantsInvoice = form.get('facture');
+      let message = `**Nouvelle demande d'assistance**\nEmail : ${form.get('email')}\nDiscord : ${form.get('discord')}\nDétails : ${form.get('details')}\nContact : ${contactMethod}\nFacture : ${wantsInvoice}`;
+
+      let userMessage = "";
+      if (contactMethod === 'discord') {
+        userMessage += "Un administrateur va vous contacter via Discord. ";
+      } else if (contactMethod === 'email') {
+        userMessage += "Un administrateur va vous répondre par e-mail. ";
+      }
+      if (wantsInvoice === 'oui') {
+        userMessage += "Vous allez recevoir la facture par email.";
+      }
+
+      try {
+        const res = await fetch(webhookURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: message })
+        });
+        if (!res.ok) throw new Error("Erreur réseau");
+        document.getElementById('responseBox').innerText = userMessage;
+        document.getElementById('responseBox').style.display = 'block';
+        this.reset();
+      } catch (err) {
+        alert("Une erreur est survenue, veuillez réessayer plus tard.");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
